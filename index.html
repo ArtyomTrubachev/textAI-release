@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preload" href="./src/index.css" as="style">
+        <link rel="stylesheet" href="./src/index.css">
+
+        <title>TextAI</title>
+    </head>
+
+    <body>
+        <div id="particles-js"></div>
+
+        <section class="antiPlagiarism">
+            <header class="antiPlagiarism-header">
+                <h1 class="antiPlagiarism-header-title">text.AI</h1>
+                <h2 class="antiPlagiarism-header-title-subtitle">Intelligent App for text processing</h2>
+            </header>
+        
+            <main class="antiPlagiarism-main">
+                <form method="POST" class="antiPlagiarism-main-form">
+                    <textarea class="antiPlagiarism-main-textarea" placeholder="Input text..." name="value" id="value"></textarea>
+                    <button class="antiPlagiarism-main-button" type="button" id="send">Check</button>
+                </form>
+                <div>
+                    <div id="result" class="result"></div>
+                    <img src="src/brain.svg" class="antiPlagiarism-main-img">
+                </div>
+                
+            </main>
+        
+            <footer class="antiPlagiarism_footer">
+                <div class="antiPlagiarism-footer-devinc_logo">
+                    <a href="http://devincubator.by/">
+                        <img src="src/devinc.svg" alt="Dev Incubator logo" >
+                    </a>
+                </div>
+                <div class="antiPlagiarism-footer-authors">
+                    Artem, Marat, Artem 2021
+                </div>
+                <div class="antiPlagiarism-footer-social_media">
+                    <div class="antiPlagiarism-footer-social_media-links">
+                        <a href="https://github.com/">
+                            <img src="src/github.svg" alt="GitHub">
+                        </a>
+                    </div>
+                    <div class="antiPlagiarism-footer-social_media-links">
+                        <a href="http://vk.com/">
+                            <img src="src/vk.svg" alt="Vk">
+                        </a>
+                    </div>
+                    <div class="antiPlagiarism-footer-social_media-links">
+                        <a href="https://facebook.com/">
+                            <img src="src/facebook.svg" alt="FaceBook">
+                        </a>
+                    </div>
+                </div>
+
+            </footer>
+        </section>
+
+        <script src="https://kit.fontawesome.com/5c6ff8eb8e.particles-js" crossorigin="anonymous"></script>
+        <script src="src/particles.js" ></script>
+        <script src="src/app.js" ></script>
+        <script src="src/serverRequest.js" ></script>
+        
+    </body>
+</html>

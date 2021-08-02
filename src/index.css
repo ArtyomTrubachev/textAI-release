@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;700;800&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+body{
+    position: relative; 
+    background: linear-gradient(90deg, #4568DC 0%, #AF6AB3 100%), #4568DC;
+    font-family: "Exo 2", sans-serif;
+}
+
+#particles-js{position: absolute; 
+    top:0; 
+    left:0; 
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+
+.antiPlagiarism{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.875rem 1.25rem;
+    max-width: 76.25rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.antiPlagiarism-header{
+    margin-bottom: 8rem;
+}
+
+.antiPlagiarism-header-title{
+    font-style: normal;
+    font-weight: 800;
+    font-size: 5.625rem;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+}
+
+
+.antiPlagiarism-header-title-subtitle{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3.125rem;
+    text-align: center;
+    color: #ffffff;
+}
+
+.antiPlagiarism-main{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8.7381rem;
+}
+
+.antiPlagiarism-main-form{
+    display: flex;
+    width: 47.5%;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.antiPlagiarism-main-textarea{
+    outline: none;
+    resize: none;
+    width: 100%;
+    height: 100%;
+    background: #f4f4f4;
+    border: 0.125rem solid #731C99;
+    border-radius: 1.25rem;
+    padding: 1.875rem 1.625rem;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.125rem;
+    line-height: 1.375rem;
+}
+
+
+.antiPlagiarism-main-button {
+    width: 40%;
+    height: 4.375rem;
+    outline: none;
+    margin-left: 1.25rem;
+    background: #731C99;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.75rem;
+    line-height: 2.125rem;
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.antiPlagiarism-main-img{
+    background-color: black;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+
+}
+
+.antiPlagiarism_footer{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background: #ffffff;
+    border: 2px solid #731C99;
+    border-radius: 10px;
+    padding: 1.5625rem 2.5rem 1rem 2.5rem;
+}
+
+.antiPlagiarism-footer-authors{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    color: #5C5C5C;
+}
+
+.antiPlagiarism-footer-social_media{
+    display: flex;
+}
+
+.antiPlagiarism-footer-social_media-links{
+    margin-left: 1.5rem;
+}
+
+.result{
+    color: #f3f3f3;
+    font-size: 5rem;
+    font-weight: 400;
+    position: absolute;
+    bottom: 0;
+    top: 42%;
+    right: 0;
+    left: 63%;
+    z-index: 999;
+}
+
+.opacity {
+    opacity: .4;
+}
+

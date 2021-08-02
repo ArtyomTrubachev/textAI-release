@@ -1,72 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="preload" href="./src/index.css" as="style">
-        <link rel="stylesheet" href="./src/index.css">
+    <link rel="stylesheet" href="./src/index.css">
 
-        <title>TextAI</title>
-    </head>
+    <title>antiPlagiarism</title>
+</head>
 
-    <body>
-        <div id="particles-js"></div>
+<body>
+    <div id="particles-js"></div>
 
-        <section class="antiPlagiarism">
-            <header class="antiPlagiarism-header">
-                <h1 class="antiPlagiarism-header-title">text.AI</h1>
-                <h2 class="antiPlagiarism-header-title-subtitle">Intelligent App for text processing</h2>
-            </header>
-        
-            <main class="antiPlagiarism-main">
-                <form method="POST" class="antiPlagiarism-main-form">
-                    <textarea class="antiPlagiarism-main-textarea" placeholder="Input text..." name="value" id="value"></textarea>
-                    <button class="antiPlagiarism-main-button" type="button" id="send">Check</button>
-                </form>
-                <div>
-                    <div id="result" class="result"></div>
-                    <img src="src/brain.svg" class="antiPlagiarism-main-img">
+    <section class="antiPlagiarism">
+
+        <header class="antiPlagiarism-header">
+            <h1 class="antiPlagiarism-header-title">text.AI</h1>
+            <h2 class="antiPlagiarism-header-title-subtitle">Intelligent App for text processing</h2>
+        </header>
+
+        <main class="antiPlagiarism-main">
+            <form method="POST" class="antiPlagiarism-main-form">
+                <div class="antiPlagiarism__textarea">
+                    <textarea class="antiPlagiarism__textinput" placeholder="Input text..." name="value" id="value"></textarea>
                 </div>
-                
-            </main>
-        
-            <footer class="antiPlagiarism_footer">
-                <div class="antiPlagiarism-footer-devinc_logo">
-                    <a href="http://devincubator.by/">
-                        <img src="src/devinc.svg" alt="Dev Incubator logo" >
+
+                <div class="c-antiPlagiarism__configuration">
+
+                    <div class="c-select">
+                        <div class="c-select__header">
+                            <img class="c-select__img" src="./src/uniqueness.svg" alt="uniqueness" width="40"
+                                height="36">
+                            <span class="c-select__text">Uniqueness</span>
+                            <img class="c-select__img c-select__img--absoluteBottom" src="./src/arrow-bottom.svg"
+                                alt="arrow-bottom" width="30" height="15">
+                        </div>
+                        <div class="c-select__body">
+                            <div class="c-select__option">
+                                <img class="c-select__img" src="./src/uniqueness.svg" alt="uniqueness" width="40"
+                                    height="36"><span class="c-select__text">Uniqueness</span>
+                                <img class="c-select__img--absoluteTop" src="./src/arrow-top.svg"
+                                    alt="arrow-bottom">
+                            </div>
+                            <div class="c-select__option">
+                                <img class="c-select__img" src="./src/repetition.svg" alt="repetition" width="36"
+                                    height="36"><span class="c-select__text">Repetition</span>
+                            </div>
+                            <div class="c-select__option">
+                                <img class="c-select__img" src="./src/misprint.svg" alt="misprint" width="37"
+                                    height="32"><span class="c-select__text">Misprint</span>
+                            </div>
+                            <div class="c-select__option">
+                                <img class="c-select__img" src="./src/validation.svg" alt="validation" width="34"
+                                    height="34"><span class="c-select__text">Validation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button disabled id="send" title="Enter at least 3 words!" class="c-antiPlagiarism__button"
+                        type="button">Check</button>
+                </div>
+            </form>
+
+            <div class="antiPlagiarism-main-img-flex">
+                <div class="result" id="result"></div>
+                <img src="src/brain.svg" class="antiPlagiarism-main-img">
+            </div>
+
+        </main>
+
+        <footer class="antiPlagiarism_footer">
+
+            <div class="antiPlagiarism-footer-devinc_logo">
+                <img class="antiPlagiarism__img" src="src/devinc.svg" alt="logo">
+            </div>
+
+            <div class="antiPlagiarism-footer-authors">
+                <p class="antiPlagiarism-footer-text">Artem, Marat, Artem 2021</p>
+            </div>
+
+            <div class="antiPlagiarism-footer-social_media">
+                <div class="antiPlagiarism-footer-social_media-links">
+                    <a href="https://github.com">
+                        <img class="antiPlagiarism__icon" src="src/github.svg" alt="github">
                     </a>
                 </div>
-                <div class="antiPlagiarism-footer-authors">
-                    Artem, Marat, Artem 2021
+                <div class="antiPlagiarism-footer-social_media-links">
+                    <a href="https://www.vk.com">
+                        <img class="antiPlagiarism__icon" src="src/vk.svg" alt="vk">
+                    </a>
                 </div>
-                <div class="antiPlagiarism-footer-social_media">
-                    <div class="antiPlagiarism-footer-social_media-links">
-                        <a href="https://github.com/">
-                            <img src="src/github.svg" alt="GitHub">
-                        </a>
-                    </div>
-                    <div class="antiPlagiarism-footer-social_media-links">
-                        <a href="http://vk.com/">
-                            <img src="src/vk.svg" alt="Vk">
-                        </a>
-                    </div>
-                    <div class="antiPlagiarism-footer-social_media-links">
-                        <a href="https://facebook.com/">
-                            <img src="src/facebook.svg" alt="FaceBook">
-                        </a>
-                    </div>
+                <div class="antiPlagiarism-footer-social_media-links">
+                    <a href="https://www.facebook.com">
+                        <img class="antiPlagiarism__icon" src="src/facebook.svg" alt="facebook">
+                    </a>
                 </div>
+            </div>
+        </footer>
 
-            </footer>
-        </section>
+    </section>
 
-        <script src="https://kit.fontawesome.com/5c6ff8eb8e.particles-js" crossorigin="anonymous"></script>
-        <script src="src/particles.js" ></script>
-        <script src="src/app.js" ></script>
-        <script src="src/serverRequest.js" ></script>
-        
-    </body>
+
+    <script src="src/particles.js"></script>
+    <script src="src/app.js"></script>
+    <script src="src/serverRequest.js"></script>
+    <script src="src/select.js"></script>
+</body>
+
 </html>

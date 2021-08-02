@@ -20,6 +20,12 @@ copy src/particles.js /var/www/html/src/particles.js
 copy src/app.js /var/www/html/src/app.js 
 copy src/select.js /var/www/html/src/select.js 
 
+copy src/arrow-bottom.svg /var/www/html/src/arrow-bottom.svg
+copy src/arrow-top.svg /var/www/html/src/arrow-top.svg
+copy src/misprint.svg /var/www/html/src/misprint.svg
+copy src/repetition.svg /var/www/html/src/repetition.svg
+copy src/uniqueness.svg /var/www/html/src/uniqueness.svg
+copy src/validation.svg /var/www/html/src/validation.svg
 copy src/brain.svg /var/www/html/src/brain.svg
 copy src/devinc.svg /var/www/html/src/devinc.svg
 copy src/facebook.svg /var/www/html/src/facebook.svg

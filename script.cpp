@@ -177,7 +177,7 @@ double countplagiat(string arrayShinglesOriginal[], string arrayShinglesAnother[
 		for (int j = 0; j < numberShinglesOriginal; j++) 	
 			if (arrayShinglesAnother[i] == arrayShinglesOriginal[j]) 
 				matchesCount++;
-	percentUnic = 55 - matchesCount / numberShinglesAnother * 100.0;
+	percentUnic = 100 - matchesCount / numberShinglesAnother * 100.0;
 	return percentUnic;	
 }	
 

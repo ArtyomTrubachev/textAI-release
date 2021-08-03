@@ -6,17 +6,20 @@
 #include <cgicc/Cgicc.h>
 #include <cgicc/HTTPHTMLHeader.h>
 #include <cgicc/HTMLClasses.h>
+#include <fstream>
+
 using namespace std;
 using namespace cgicc;
 
-const int N = 999;
+const int N = 99999;
+const int SHINGLE_LENGTH = 3;
 char LatinianLetter[] = "AaBCcEeHKkMmOoPpTXxYy";
 char RussianLetter[] = "АаВСсЕеНКкМмОоРрТХхУу";
 char word[N];
 char charOriginalText[N];
 char anotherText[N];
-string strOriginalText = "Основная история происходит в течение трёх лет с момента пика Великой депрессии в вымышленном «уставшем от долгой жизни» городе Мейкомб, штат Алабама.";
-string strAnotherText = "Основная рассказ происходят в течение двух лет с момента упадка Невеликой депрессии в вымышленном «уставшем от короткой жизни» городе Атланта, штат Нью-мехико.";
+//string strOriginalText = "Основная история происходит в течение трёх лет с момента пика Великой депрессии в вымышленном уставшем от долгой жизни городе Мейкомб, штат Алабама.";
+//string strAnotherText = "Основная история происховдит в течение трёх лет с момента пика Мелкой депрессии в вымышленном уставшем от долгой жизни городе Мейкомб, штат Алабама.";
 string arrayWordsOriginalText[N];
 string arrayWordsAnotherText[N];
 string shingleOriginal[N];
@@ -24,24 +27,20 @@ string shingleAnother[N];
 
 double anitPlagiarism(string text, string fragment);
 bool isSeparator (char c);
-bool LowerLetter(char symbal);
-void getCharsFromString (char textArray[], string text);
-void getTextInOneLanguage (char text[], char Latinian[], char Russian[]);
-int getNumberSymbalsInText (string text);
-void getLowCasefromUppCase (char text[]);
-void getTextInOneLanguage (char text[]);
+void stringToCharsArray(char textArray[], string text);
+void toCirilicGetWords (char text[], char Latinian[], char Russian[]);
+void toLowerCase (char text[]);
 void getWords(char text[], string recordArray[]);
 void getShingles(string shingleArray[],string arrayCanonizedWords[], int numberWords);
-void showArray(string array[], int numWords);
 int countWords(string array[]);
 double countplagiat(string arrayShinglesOriginal[], string arrayShinglesAnother[], int numberShinglesOriginal, int numberShinglesAnother);
-
 
 int getInt(string name);//get length of text putted in the form on your site(this function we use only for example)
 string getDB();//get origin text from db.txt (don't modify tis function)
 
 int main()
 {
+	//setlocale(LC_ALL, "Russian");
     Cgicc form;
     string name;
 
@@ -63,7 +62,7 @@ int main()
     cout << "</body>\n";
     cout << "</html>\n";
 
-    return 0;
+    return 0;				
 }
 int getInt(string name){
 	return name.length();
@@ -82,15 +81,15 @@ string getDB(){
 }
 //-----------Функция антиплагиаризм-------------------------------------------
 double anitPlagiarism(string text, string fragment)
-{
-	getCharsFromString(charOriginalText, strOriginalText);	
-	getCharsFromString(anotherText, strAnotherText);		
+{	
+	stringToCharsArray(charOriginalText, text);	
+	stringToCharsArray(anotherText, fragment);		
 				
-	getTextInOneLanguage(charOriginalText, LatinianLetter, RussianLetter);
-	getTextInOneLanguage(anotherText, LatinianLetter, RussianLetter);
+	toCirilicGetWords(charOriginalText, LatinianLetter, RussianLetter);
+	toCirilicGetWords(anotherText, LatinianLetter, RussianLetter);
 	
- 	getLowCasefromUppCase(charOriginalText);	
- 	getLowCasefromUppCase(anotherText);	
+ 	toLowerCase(charOriginalText);	
+ 	toLowerCase(anotherText);	
  	
 	getWords(charOriginalText, arrayWordsOriginalText);
 	getWords(anotherText, arrayWordsAnotherText);
@@ -101,7 +100,7 @@ double anitPlagiarism(string text, string fragment)
 	return countplagiat(shingleOriginal, shingleAnother, countWords(shingleOriginal), countWords(shingleAnother));
 }
 //-----------Изменение текста STRING В CHAR-------------------------------------------
-void getCharsFromString(char textArray[], string text)
+void stringToCharsArray(char textArray[], string text)
 {
 	int i = 0;
 	for (i = 0; i < text.length(); i++)
@@ -109,7 +108,7 @@ void getCharsFromString(char textArray[], string text)
 	textArray[i] = '\0';
 }
 //-----------Преобразование ВЕРХНЕГО РЕГИСТРА БУКВ В НИЖНИЙ---------------------------
-void getLowCasefromUppCase(char text[])
+void toLowerCase(char text[])
 {
 	for (int i = 0; text[i] != '\0'; i++) {
 		if (text[i] >= -64 and text[i] <= -33) 
@@ -119,7 +118,7 @@ void getLowCasefromUppCase(char text[])
 	} 							
 }
 //-----------Замена букв из латинского алфавита на русские буквы, если встречаются----
-void getTextInOneLanguage(char text[], char Latinian[], char Russian[])
+void toCirilicGetWords(char text[], char Latinian[], char Russian[])
 {
 	for (int i = 0; text[i] != '\0'; i++) 
 		for (int j = 0; Latinian[j] != '\0'; j++)
@@ -156,16 +155,16 @@ bool isSeparator(char c)
 //-----------Разделение на шинглы-------------------------------------------------
 void getShingles(string shingleArray[],string arrayCanonizedWords[], int numberWords)
 {
-	for (int i = 0; i < numberWords - 2; i++) {
-		shingleArray[i] = arrayCanonizedWords[i] + arrayCanonizedWords[i+1] + arrayCanonizedWords[i+2];
+	for (int i = 0; i < numberWords - (SHINGLE_LENGTH -1) ; i++) {
+		int countWordsInShingle = 0;
+		int j = i;
+		while (countWordsInShingle < SHINGLE_LENGTH) {
+			shingleArray[i] += arrayCanonizedWords[j];
+			countWordsInShingle++;
+			j++;				
+		}
 	}
 }
-//-----------Показать массив string-------------------------------------------------	
-void showArray (string array[], int numWords)
-{
-	for (int i = 0; i < numWords - 1; i++) 
-		cout << array[i] << endl;
-}	
 //-----------Посчитать кол-во слов в массиве string--------------------------------
 int countWords(string array[])
 {
@@ -177,12 +176,13 @@ int countWords(string array[])
 //-----------Расчет плагиата--------------------------------------------------------
 double countplagiat(string arrayShinglesOriginal[], string arrayShinglesAnother[], int numberShinglesOriginal, int numberShinglesAnother)
 {
-	double count = 0;
+	double matchesCount = 0;
 	double percentUnic = 0.0;
 	for (int i = 0; i < numberShinglesAnother; i++) 
 		for (int j = 0; j < numberShinglesOriginal; j++) 	
 			if (arrayShinglesAnother[i] == arrayShinglesOriginal[j]) 
-				count++;
-	percentUnic = 100.0 - (count / numberShinglesAnother * 100.0);
+				matchesCount++;
+	percentUnic = 100 - matchesCount / numberShinglesAnother * 100.0;
 	return percentUnic;	
 }	
+

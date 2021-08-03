@@ -273,17 +273,29 @@ body {
   color: #f3f3f3;
   font-size: 5rem;
   font-weight: 400;
+  z-index: 999; 
   position: absolute;
-  bottom: 0;
-  top: 42%;
+  left: 0;
   right: 0;
-  left: 63%;
-  z-index: 999;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-left: 1rem;
 }
 
 .opacity {
   opacity: 0.4;
 }
+
+.antiPlagiarism-main-img-flex{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 @media (max-width: 869px) {
   .antiPlagiarism-header {

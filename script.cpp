@@ -18,8 +18,6 @@ char RussianLetter[] = "ја¬—с≈еЌ кћмќо–р“’х”у";
 char word[N];
 char charOriginalText[N];
 char anotherText[N];
-//string strOriginalText = "ќсновна€ истори€ происходит в течение трЄх лет с момента пика ¬еликой депрессии в вымышленном уставшем от долгой жизни городе ћейкомб, штат јлабама.";
-//string strAnotherText = "ќсновна€ истори€ происховдит в течение трЄх лет с момента пика ћелкой депрессии в вымышленном уставшем от долгой жизни городе ћейкомб, штат јлабама.";
 string arrayWordsOriginalText[N];
 string arrayWordsAnotherText[N];
 string shingleOriginal[N];
@@ -40,7 +38,7 @@ string getDB();//get origin text from db.txt (don't modify tis function)
 
 int main()
 {
-	//setlocale(LC_ALL, "Russian");
+	setlocale(LC_ALL, "Russian");
     Cgicc form;
     string name;
 
@@ -63,9 +61,6 @@ int main()
     cout << "</html>\n";
 
     return 0;				
-}
-int getInt(string name){
-	return name.length();
 }
 
 string getDB(){

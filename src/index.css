@@ -275,14 +275,9 @@ body {
   font-weight: 400;
   z-index: 999; 
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
   display: flex;
   align-items: center;
   text-align: center;
-  margin-left: 1rem;
 }
 
 .opacity {
@@ -413,6 +408,9 @@ body {
 
   .antiPlagiarism-footer-text {
     font-size: 1rem;
+  }
+  .result {
+    font-size: 3rem;
   }
 
 
